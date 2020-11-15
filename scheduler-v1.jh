@@ -1,0 +1,40 @@
+entity User {}
+
+entity Person {
+    fte Double
+    internalUser User
+}
+
+entity Instance {
+    startingDate Instant
+    studentCount Integer
+    load Double
+}
+
+entity PersonInstance {
+	
+}
+
+entity Role {
+	title String
+    weighting Double
+}
+
+entity Subject {
+	code String
+    title String
+}
+
+relationship ManyToMany {
+	Person to Subject
+}
+
+relationship OneToOne {
+	Person to PersonInstance,
+    Instance to PersonInstance,
+    Role to PersonInstance
+}
+
+relationship OneToMany {
+	Subject to Instance
+}
