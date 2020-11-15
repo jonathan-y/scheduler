@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span>Instances</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-instance" [routerLink]="['/instance/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Instance
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="instances?.length === 0">
+        <span>No instances found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="instances && instances.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Starting Date</span></th>
+                    <th scope="col" ><span>Student Count</span></th>
+                    <th scope="col" ><span>Load</span></th>
+                    <th scope="col" ><span>Person Instance</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let instance of instances ;trackBy: trackId">
+                    <td><a [routerLink]="['/instance', instance.id, 'view']">{{ instance.id }}</a></td>
+                    <td>{{ instance.startingDate | date:'medium' }}</td>
+                    <td>{{ instance.studentCount }}</td>
+                    <td>{{ instance.load }}</td>
+                    <td>
+                        <div *ngIf="instance.personInstance">
+                            <a [routerLink]="['/person-instance', instance.personInstance?.id, 'view']" >{{ instance.personInstance?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/instance', instance.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/instance', instance.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(instance)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

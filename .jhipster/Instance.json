@@ -1,0 +1,44 @@
+{
+  "name": "Instance",
+  "fields": [
+    {
+      "fieldName": "startingDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "studentCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "load",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "personInstance",
+      "otherEntityRelationshipName": "instance",
+      "relationshipName": "personInstance",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "subject",
+      "otherEntityRelationshipName": "instance",
+      "relationshipName": "subject"
+    }
+  ],
+  "changelogDate": "20201115071124",
+  "entityTableName": "instance",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
