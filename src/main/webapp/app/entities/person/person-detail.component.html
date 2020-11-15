@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="person">
+            <h2><span>Person</span> {{ person.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Fte</span></dt>
+                <dd>
+                    <span>{{ person.fte }}</span>
+                </dd>
+                <dt><span>Person Instance</span></dt>
+                <dd>
+                    <div *ngIf="person.personInstance">
+                        <a [routerLink]="['/person-instance', person.personInstance?.id, 'view']">{{ person.personInstance?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Competencies</span></dt>
+                <dd>
+                    <span *ngFor="let competencies of person.competencies; let last = last">
+                        <a [routerLink]="['/subject', competencies?.id, 'view']">{{ competencies.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/person', person.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="instance">
+            <h2><span>Instance</span> {{ instance.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Starting Date</span></dt>
+                <dd>
+                    <span>{{ instance.startingDate }}</span>
+                </dd>
+                <dt><span>Student Count</span></dt>
+                <dd>
+                    <span>{{ instance.studentCount }}</span>
+                </dd>
+                <dt><span>Load</span></dt>
+                <dd>
+                    <span>{{ instance.load }}</span>
+                </dd>
+                <dt><span>Person Instance</span></dt>
+                <dd>
+                    <div *ngIf="instance.personInstance">
+                        <a [routerLink]="['/person-instance', instance.personInstance?.id, 'view']">{{ instance.personInstance?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/instance', instance.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

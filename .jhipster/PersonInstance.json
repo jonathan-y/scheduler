@@ -1,0 +1,38 @@
+{
+  "name": "PersonInstance",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "person",
+      "otherEntityRelationshipName": "personInstance",
+      "relationshipName": "person",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "instance",
+      "otherEntityRelationshipName": "personInstance",
+      "relationshipName": "instance",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "role",
+      "otherEntityRelationshipName": "personInstance",
+      "relationshipName": "role",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201115071224",
+  "entityTableName": "person_instance",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

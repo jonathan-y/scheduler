@@ -1,0 +1,38 @@
+{
+  "name": "Person",
+  "fields": [
+    {
+      "fieldName": "fte",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "personInstance",
+      "otherEntityRelationshipName": "person",
+      "relationshipName": "personInstance",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "subject",
+      "otherEntityRelationshipName": "deliverers",
+      "relationshipName": "competencies",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20201115071024",
+  "entityTableName": "person",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
