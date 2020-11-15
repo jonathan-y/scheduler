@@ -1,0 +1,48 @@
+
+
+enum Tier {
+    ACADEMIC, MANAGER, ADMINISTRATOR
+}
+
+entity User {
+	firstName String
+    lastName String
+    email String
+    password String
+    fte Double
+    tier Tier
+}
+
+entity Instance {
+    startingDate Date
+    studentCount Int
+    load Double
+}
+
+entity UserInstance {
+	
+}
+
+entity Role {
+	title String
+    weighting Double
+}
+
+entity Subject {
+	code String
+    title String
+}
+
+relationship ManyToMany {
+	User{subject} to Subject
+}
+
+relationship OneToOne {
+	User to UserInstance,
+    Instance to UserInstance,
+    Role to UserInstance
+}
+
+relationship OneToMany {
+	Subject to Instance
+}
